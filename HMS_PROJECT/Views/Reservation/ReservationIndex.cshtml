@@ -1,0 +1,200 @@
+﻿@using HMS_PROJECT.Models.Transaction
+
+@model HMS_PROJECT.Models.Transaction.Reservation
+@{
+    ViewBag.Title = "ReservationIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel container-fluid">
+            <div class="container-fluid">
+                <div class="x_title">
+                    <h2>Room Reservation<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                    <p style="text-align:right;"> <button id="btn_new" class="btn btn-info" style="padding: 10px 50px 10px 50px;" onclick="AddNewRoom('00000000-0000-0000-0000-000000000000')"> New </button></p>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <table id="Table_View" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Actions</th>
+                                            <th>S.NO</th>
+                                            <th>Booking.NO</th>
+                                            <th hidden>ID</th>
+                                            <th>Customer</th>
+                                            <th>CheckIn</th>
+                                            <th>CheckOut</th>
+                                            <th>RoomNumber</th>
+                                            <th>Price</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Create & Edit model start *@
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important;">
+        <div class="modal-content">
+            <div class="modal-header" style="margin-top:5%;">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>User Roles</h4>
+            </div>
+            <form id="create_form">
+                <fieldset id="SubmitForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-horizontal">
+                                @Html.HiddenFor(m => m.Id, new { @id = "txt_id" })
+                                <br>
+                                <div class="col-md-12">
+                                    <div style="text-align:right;">
+                                        <input id="btn_sav" type="button" value="Save" onclick="" />
+                                        @*<input id="btn_upd" type="button" value="Update" onclick=""
+                class="btn btn-warning" />*@
+                                        <input id="btn_cls" type="button" value="Close" onclick=""
+                                               class="btn btn-danger" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" id="lbl_Custo" style="text-align:left;">
+                                            Customer
+                                        </label>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(m => m.CustomerId, new SelectList(Model.CustomerCollection, "ID", "FirstName"), "Select Customer", new { @id = "ddp_customer", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <br>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Total Person
+                                        </label>
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(m => m.TotalPerson, new { @id = "txt_totper", @class = "form-control", @placeholder = "Total Person", @onchange = "FillRoomType(this.value)" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Room Type
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.DropDownListFor(m => m.Roomtype_Id, new SelectList(Model.RoomTypeCollection, "ID", "Name"), "Select Room Type", new { @id = "ddp_roomtype", @class = "form-control", @onchange = "FillRooms(this.value)" })
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Room Number
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.DropDownListFor(m => m.RoomId, new SelectList(" "), "Select Room", new { @id = "ddp_room", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @*<div id="txt_id" class="col-md-3" hidden> </div>*@
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Check IN
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.CheckIn, new { @id = "txt_checkin", @class = "form-control", @autocomplete = "off", @placeholder = "Check In" })
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Check Out
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.CheckOut, new { @id = "txt_checkout", @class = "form-control", @autocomplete = "off", @placeholder = "Check Out" , @onchange = "GenerateTotalBillByCheckout()" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @*<div id="txt_id" class="col-md-3" hidden> </div>*@
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Total Days
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.TotalDays, new { @id = "txt_totday", @class = "form-control" ,@readonly = "readonly" })
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Total Payment
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.Total_Payment, new { @id = "txt_totpay", @class = "form-control", @autocomplete = "off", @placeholder = "Total Payment" ,@readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @*<div id="txt_id" class="col-md-3" hidden> </div>*@
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Up-Front Payment
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.UpFront_Amount, new { @id = "txt_upframnt", @class = "form-control", @autocomplete = "off", @placeholder = "Up-Front Amount", @onchange = "CalulateRemaining()" })
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Remaining Banalance
+                                        </label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(m => m.Remaining_Balance, new { @id = "txt_rembal", @class = "form-control", @autocomplete = "off", @placeholder = "Remaining Balance", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create & Edit model End *@
+
+@*Cretae Popup Modal for Delete Confirmation*@
+<div class="modal fade" id="DeleteConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Delete Student Record</h4>
+            </div>
+            <div class="modal-body">
+                <h4> Are you sure? you want to dlete This Record</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-danger" onclick="confirmDelete()">Confirm</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/FunctionJS/Transaction/Reservation.js"></script>

@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewBag.Title = "WebSiteView";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+
+}
+<!-- header -->
+<div class="banner">
+    <div class="container">
+        <div class="head-nav">
+            <span class="menu"> </span>
+            <ul class="cl-effect-7">
+                <li><a href="#ourresort" class="scroll">our resort</a></li>
+                <li><a href="#suites" class="scroll">suites</a></li>
+                <li><a href="#services" class="scroll">services</a></li>
+                <li><a href="#reservations" class="scroll">reservations</a></li>
+                <li>@Html.ActionLink("Login", "Login", "Login")</li>          
+                <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                <div class="clearfix"> </div>
+            </ul>
+        </div>
+        <!-- script-for-nav -->
+        <script>
+            $("span.menu").click(function () {
+                $(".head-nav ul").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            });
+        </script>
+        <!-- script-for-nav -->
+        <center>
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")" id="Login"><img src="~/Content/WebTemplate/images/logo.png" class="img-responsive " id="Login" alt="" /></a>
+            </div>
+        </center>
+        <div class="banner-info">
+            <p>Enjoy the stupendous calm and peace of this tree-shaded location cradled by mountains where time stands still.choose ease, harmony and wellbeing over the hectic pace of today's lifestyle!</p>
+        </div>
+    </div>
+</div>
+<!-- header -->
+<!-- ENCHANTMENT  -->
+<div class="ENCHANTMENT" id="ourresort">
+    <div class="col-md-6 ENCHANTMENT-left">
+        <img src="~/Content/WebTemplate/images/5.jpg" class="img-responsive" alt="">
+    </div>
+    <div class="col-md-6 ENCHANTMENT-right">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="slider-info">
+                            <img src="~/Content/WebTemplate/images/logo1.png" class="img-responsive" alt="">
+                            <h3>ENCHANTMENT AND SPLENDOUR</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque justo ac velit facilisis convallis vel id nisi. Morbi hendrerit ac tellus eu luctus. Vestibulum ullamcorper elit eu eleifend posuere. Proin imperdiet nisl eu est vulputate, vel tincidunt lacus pretium.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-info">
+                            <img src="~/Content/WebTemplate/images/logo1.png" class="img-responsive" alt="">
+                            <h3>ENCHANTMENT AND SPLENDOUR</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque justo ac velit facilisis convallis vel id nisi. Morbi hendrerit ac tellus eu luctus. Vestibulum ullamcorper elit eu eleifend posuere. Proin imperdiet nisl eu est vulputate, vel tincidunt lacus pretium.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slider-info">
+                            <img src="~/Content/WebTemplate/images/logo1.png" class="img-responsive" alt="">
+                            <h3>ENCHANTMENT AND SPLENDOUR</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque justo ac velit facilisis convallis vel id nisi. Morbi hendrerit ac tellus eu luctus. Vestibulum ullamcorper elit eu eleifend posuere. Proin imperdiet nisl eu est vulputate, vel tincidunt lacus pretium.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- FlexSlider -->
+        <script defer src="~/Content/WebTemplate/js/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                SyntaxHighlighter.all();
+            });
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function (slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+        </script>
+        <!-- FlexSlider -->
+        <!-- slider -->
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- ENCHANTMENT  -->
+<!-- wonder -->
+<div class="wonder" id="">
+    <div class="col-md-2 wonder-left">
+        <img src="~/Content/WebTemplate/images/2.jpg" class="img-responsive" alt="">
+    </div>
+    <div class="col-md-4 wonder-mid">
+        <img src="~/Content/WebTemplate/images/logo1.png" class="img-responsive" alt="">
+        <h5>ACCOMMODATION</h5>
+        <h3>EMOTIONS AND WONDER</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque justo ac velit facilisis </p>
+    </div>
+    <div class="col-md-6 wonder-right">
+        <img src="~/Content/WebTemplate/images/bed2.jpg" class="img-responsive" alt="">
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- wonder -->
+<!-- rooms -->
+<div class="rooms" id="suites">
+    <div class="col-md-4 rooms-1">
+        <div class="room-info">
+            <img src="~/Content/WebTemplate/images/logo2.png" class="img-responsive" alt="">
+        </div>
+        <div class="room-info1">
+            <ul>
+                <li><a href="#"><i class="search"></i>explore</a></li>
+                <li><a href="#"><i class="boo"></i>brochure</a></li>
+                <li><a href="#"><i class="bro"></i>booking</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 rooms-2">
+        <div class="room-info">
+            <img src="~/Content/WebTemplate/images/logo3.png" class="img-responsive" alt="">
+        </div>
+        <div class="room-info1">
+            <ul>
+                <li><a href="#"><i class="search"></i>explore</a></li>
+                <li><a href="#"><i class="boo"></i>brochure</a></li>
+                <li><a href="#"><i class="bro"></i>booking</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 rooms-3">
+        <div class="room-info">
+            <img src="~/Content/WebTemplate/images/logo4.png" class="img-responsive" alt="">
+        </div>
+        <div class="room-info1">
+            <ul>
+                <li><a href="#"><i class="search"></i>explore</a></li>
+                <li><a href="#"><i class="boo"></i>brochure</a></li>
+                <li><a href="#"><i class="bro"></i>booking</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- rooms -->
+<!-- services -->
+<div class="services" id="services">
+    <div class="col-md-6 services-left">
+        <img src="~/Content/WebTemplate/images/logo1.png" class="img-responsive" alt="">
+        <h2>SERVICES</h2>
+        <div class="col-md-3 services-left1">
+            <h5>FAMILIES</h5>
+            <ul>
+                <li><a href="#">Facilities available for children</a></li>
+                <li><a href="#">Children's bathrobes</a></li>
+                <li><a href="#">Children's slippers</a></li>
+                <li><a href="#">Sweets</a></li>
+                <li><a href="#">Cartoon DVD</a></li>
+                <li><a href="#">Babysitting</a></li>
+                <li><a href="#">Highchairs </a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 services-left1">
+            <h5>Disabled Access</h5>
+            <p>Thanks to its refurbishment, completed in 2000, Resort offers the necessary facilities and equipment to welcome disabled clients in the best conditions. An adapted entrance, lifts and six rooms were especially designed for them.</p>
+        </div>
+        <div class="col-md-3 services-left1">
+            <h5>Pet friendly hotel</h5>
+            <p>
+                Complimentary pet basket (for cats and dogs) available, Custom-designed bowl with the name of the pet can be easily arranged in advance,
+                Specific menus and food
+            </p>
+        </div>
+        <div class="col-md-3 services-left1">
+            <h5>Concierge</h5>
+            <p>From a simple restaurant booking to the complete organisation of a personalised stay, our Concierge are available 24 hours a day to meet your requirements. Their secret address book makes the least of your desires </p>
+        </div>
+    </div>
+    <div class="col-md-6 services-right">
+        <img src="~/Content/WebTemplate/images/3.jpg" class="img-responsive" alt="">
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- services -->
+<!-- contact -->
+<div class="contact" id="reservations">
+    <div class="col-md-4 contact-left">
+        <div class="contact-left1">
+            <img src="~/Content/WebTemplate/images/logo5.png" class="img-responsive" alt="">
+            <h3>RESERVATION</h3>
+        </div>
+    </div>
+    <div class="col-md-8 contact-right" id="contact">
+        <div class="contact-details">
+            <h3>CONTACT DETAILS</h3>
+            <div class="text-field-name-1">
+                <form>
+                    <input type="text" class="text" value="Name*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Name*';}">
+                    <input type="text" class="text" value="Surname*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname*';}">
+                    <input type="text" class="text" value="Country" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Country';}">
+                    <input type="text" class="text" value="Email*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email*';}">
+                    <input type="text" class="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' Phone';}">
+                </form>
+            </div>
+        </div>
+        @*Reservation Detail Start*@
+        
+        @*Code*@ 
+
+        @*Reservation Detail End*@
+        <div class="clearfix"> </div>
+        <div class="button">
+            <form>
+                <input type="submit" value="send message">
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- contact -->
+<!-- guests -->
+<div class="guests">
+    <div class="container">
+        <img src="~/Content/WebTemplate/images/logo5.png" class="img-responsive" alt="">
+        <h3>BE OUR GUESTS</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque justo ac velit facilisis convallis vel id </p>
+    </div>
+</div>
+<!-- guests -->
+<!-- footer -->
+<div class="footer">
+    <div class="col-md-6 footer-left">
+        <img src="~/Content/WebTemplate/images/4.jpg" class="img-responsive" alt="">
+        <div class="col-md-6 footer-left1">
+            <img src="~/Content/WebTemplate/images/logo5.png" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-6 footer-left2">
+            <ul>
+                <li>rooms Resort</li>
+                <li>matera (Italy)</li>
+                <li>PO Box 68789</li>
+                <li>Street 445 </p></li>
+            </ul>
+            <p>+911234567895</p>
+            <h6><a href="#">info@rooms.com</h6></a>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="footer-left3">
+            <ul>
+                <li><a href="#"><i class="fb"></i></a></li>
+                <li><a href="#"><i class="twt"></i></a></li>
+                <li><a href="#"><i class="goop"></i></a></li>
+                <li><a href="#"><i class="in"></i></a></li>
+                <li><a href="#"><i class="do"></i></a></li>
+                <li><a href="#"><i class="drib"></i></a></li>
+                <li><a href="#"><i class="tet"></i></a></li>
+                <div class="clearfix"> </div>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6 footer-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et varius turpis. Donec enim sapien, sollicitudin quis volutpat nec, sagittis eget ex. Pellentesque in accumsan orci.-<span>Ian Solo-</span></p>
+        <div class="col-md-6 footer-right1">
+            <img src="~/Content/WebTemplate/images/fo.png" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-6 footer-right2">
+            <img src="~/Content/WebTemplate/images/un.png" class="img-responsive" alt="">
+        </div>
+        <div class="clearfix"> </div>
+        <h6>Copyrights © 2015 Riviera All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></h6>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 0;"></span> <span id="toTopHover" style="opacity: 0;"> </span></a>
+<!-- footer -->
+@section scripts{
+    <script>
+        $('#Check').click(function () {
+            $.ajax({
+                url: '../Web/GetRooms',
+                type: 'POST',
+                data: {
+                    roomType: parseInt($('#RoomTypes').val()),
+                },
+                success: function (data) {
+
+                    //var data = JSON.parse(data);
+                    $('#tdata tbody').empty();
+                    console.log(data);
+                    data.forEach(function (dt) {
+                        $("#tdata tbody").append("<tr>" +
+                            "<td>" + dt.ID + "</td>" +
+                            "<td>" + dt.Room_No + "</td>" +
+                            "<td>" + dt.Room_Name + "</td>"
+                            + "</tr>"
+                        );
+
+                    });
+                    $('#myModal').modal('show');
+
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        });
+    </script>
+
+}
+
+
+
+
+

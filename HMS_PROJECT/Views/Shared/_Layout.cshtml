@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hotel Managment System</title>
+
+
+    <!-- J QUERY -->
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>*@
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+    <!-- Datetime Pickers -->
+    <script src="~/Content/DateTimePicker/datetimepicker.js"></script>
+    <link href="~/Content/DateTimePicker/datetimepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- J QUERY -->
+    <!-- Style Sheet -->
+    @Styles.Render("~/Content/dashboard/style.css")
+    <link href="~/Content/navbar/style.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>*@
+
+
+    <!-- Data Tables -->
+    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <!-- navbar Link-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- SweetAleart2-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Select 2 -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/select2/select2.min.css">
+    <script src="~/Content/Login/vendor/select2/select2.min.js"></script>
+
+</head>
+<body>
+    @*nav Start*@
+    <div>
+        <div class="sidebar close">
+            <div class="logo-details">
+                <i class="fa fa-registered" aria-hidden="true"></i>
+
+            <span class="logo_name">Riviera</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">Dashboard</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name">Dashboard</a></li>
+                    </ul>
+                </li>
+                @{
+                    if (Session["UserName"] == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        if ((Session["Role"].ToString()) == "Admin")
+                        {
+                            <li>
+                                <div class="iocn-link">
+                                    <a href="#">
+                                        <i class='fas fa-code-branch'></i>
+                                        <span class="link_name">System</span>
+                                    </a>
+                                    <i class='bx bxs-chevron-down arrow'></i>
+                                </div>
+                                <ul class="sub-menu">
+                                    <li><a class="link_name" href="#">System</a></li>
+                                    <li><a href="@Url.Action("UserRoleIndex", "UserRole")">User Role</a></li>
+                                    <li><a href="@Url.Action("AppUserIndex", "AppUser")">Users</a></li>
+                                    <li><a href="@Url.Action("BackUPIndex", "BackUP")">Back UP</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                }
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            <span class="link_name">Setup</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Setup</a></li>
+                        <li><a href="@Url.Action("RoomTypeIndex", "RoomType")">Room Type</a></li>
+                        <li><a href="@Url.Action("RoomIndex", "Room")">Room Detail</a></li>
+                        <li><a href="@Url.Action("CustomerIndex", "Customer")">Customer</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class="far fa-sticky-note"></i>
+                            <span class="link_name">Transaction</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Transaction</a></li>
+                        <li><a href="@Url.Action("ReservationIndex", "Reservation")">Reservation</a></li>
+                        <li><a href="@Url.Action("PaymentIndex", "Payment")">Payment</a></li>
+                    </ul>
+                </li>
+                @*<li>
+                    <a href="#">
+                        <i class="far fa-sticky-note"></i>
+                        <span class="link_name">Transaction</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Transaction</a></li>
+                        <li><a href="@Url.Action("ReservationIndex", "Reservation")">Reservation</a></li>
+                        <li><a href="@Url.Action("PaymentIndex", "Payment")">Payment</a></li>
+                    </ul>
+                </li>*@
+                <li>
+                    <a href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="link_name">Logout</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("Logout", "Home")">Logout</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="profile-details">
+                        <div class="profile-content">
+                            @*<img src="~/Content/navbar/image/profile.jpg" alt="profileImg">*@
+                            <img src="~/Content/dashboard/user.png" />
+                        </div>
+                        <div class="name-job">
+                            <div class="profile_name">@Session["UserName"]</div>
+                            <div class="job">@Session["Role"]</div>
+                        </div>
+                        <i class='bx bx-log-out'></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section">
+            <div class="topbar">
+                <div class="home-content">
+                    <i class='bx bx-menu'></i>
+                </div>
+                <!--userIMg-->
+                <span>
+                    <div class="user" style="width:50px;image-rendering:auto">
+                        <img src="~/Content/dashboard/user.png" />
+                    </div>
+                    <div> @Session["UserName"] </div>
+                </span>
+            </div>
+            <div>
+
+            </div>
+
+            <div class="container-fluid body-content" style="background-color:white;padding:50px 0px 50px 0px">
+                @RenderBody()
+            </div>
+            <footer>
+                <center><p>&copy; @DateTime.Now.Year - Hotel Managment System By Artenious</p></center>
+            </footer>
+        </section>
+
+        @*nav Ended*@
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script>
+            //Menu Toggle
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+
+            toggle.onclick = function () {
+                navigation.classList.toggle('active');
+                main.classList.toggle('active');
+            }
+            // add hovered class in selected list item
+            let list = document.querySelectorAll('.navigation li');
+            function activeLink() {
+                list.forEach((item) =>
+                    item.classList.remove('hovered'));
+                this.classList.add('hovered');
+            }
+            list.forEach((item) =>
+                item.addEventListener('mouseover', activeLink));
+        </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+        @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+        @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>*@
+        <script src="~/Content/navbar/script.js"></script>
+
+
+</body>
+</html>
